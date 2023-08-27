@@ -1,7 +1,11 @@
 <script>
 	import '@/styles/global.css';
+
+	import { ThemeProvider } from '@/lib';
 </script>
 
 <div class="App">
-	<slot />
+	<ThemeProvider>
+		<slot />
+	</ThemeProvider>
 </div>
