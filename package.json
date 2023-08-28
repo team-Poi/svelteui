@@ -34,7 +34,9 @@
 	},
 	"type": "module",
 	"files": [
-		"dist"
+		"dist",
+		"package.json",
+		"README.md"
 	],
 	"exports": {
 		".": {
