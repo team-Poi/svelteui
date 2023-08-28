@@ -1,7 +1,6 @@
 {
 	"name": "@team.poi/svelteui",
 	"version": "1.0.0",
-	"private": false,
 	"description": "UIKit made by @team.poi for svelte",
 	"scripts": {
 		"dev": "vite dev",
@@ -44,5 +43,6 @@
 			"svelte": "./dist/index.js"
 		}
 	},
-	"svelte": "./dist/index.js"
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts"
 }
