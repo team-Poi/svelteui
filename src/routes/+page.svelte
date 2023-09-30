@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import ColorViewer from '@/lib/ThemeProvider/ColorViewer.svelte';
-	import { Progress, Container, Card, Button } from '@/lib';
+	import { Progress, Container, Card, Button, Input } from '@/lib';
+	import Loading from '@/lib/Loading/Loading.svelte';
 	let pro = 0.5;
 </script>
 
@@ -36,4 +37,15 @@
 		<div>WARNING</div>
 		<Button color="WARNING">WARNING</Button>
 	</Card>
+	<div style="width: 100%; box-sizing: border-box;">
+		<Card Layer="2" style="width: 100%; box-sizing: border-box; margin-top: 1rem;">
+			<Input color="PRIMARY" placeholder="PRIMARY" />
+			<Input color="SECONDARY" placeholder="SECONDARY" />
+			<Input color="SUCCESS" placeholder="SUCCESS" />
+			<Input color="INFO" placeholder="INFO" />
+			<Input color="ERROR" placeholder="ERROR" />
+			<Input color="WARNING" placeholder="WARNING" />
+		</Card>
+	</div>
+	<Loading size="8rem" />
 </Container>

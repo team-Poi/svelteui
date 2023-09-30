@@ -8,9 +8,12 @@
 		color: 'PRIMARY' | 'SECONDARY' | 'SUCCESS' | 'INFO' | 'ERROR' | 'WARNING' = 'PRIMARY';
 	let bgcolor = `var(--COLORS-${color})`;
 	export let disabled = false;
+
+	export let rippleStyle = '';
+	export let style = '';
 </script>
 
-<Ripple>
+<Ripple style={rippleStyle}>
 	<button
 		{disabled}
 		on:click
@@ -19,7 +22,7 @@
 		on:mouseleave
 		{...buttonProps}
 		class={'btn ' + (className || '')}
-		style={`--bgcolor: ${bgcolor}`}
+		style={`--bgcolor: ${bgcolor};${style}`}
 	>
 		<slot />
 	</button>
@@ -27,8 +30,8 @@
 
 <style>
 	.btn {
-		padding: 0.5rem 2rem;
-		font-size: 1rem;
+		padding: 0.45rem 1.3rem;
+		font-size: 0.98rem;
 		border-radius: var(--RADIUS-HEAVY);
 		border: 0px;
 		outline: none;

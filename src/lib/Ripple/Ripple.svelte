@@ -29,6 +29,8 @@
 			tranform = `scale(${size / 9})`;
 		}, 50);
 	};
+
+	export let style = '';
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -37,6 +39,7 @@
 		onClick(e);
 	}}
 	class="ripple"
+	{style}
 >
 	<slot />
 
