@@ -167,21 +167,22 @@ const DARK_THEME = {
 	}
 };
 
-export const isDarkMode = () =>
-	typeof window !== 'undefined' &&
-	window.matchMedia &&
-	window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-export function getTHEME() {
+export const isDarkMode = () => {
 	if (typeof localStorage != 'undefined') {
 		const theme = localStorage.getItem('theme');
 		if (theme != null) {
-			if (theme == 'dark') return DARK_THEME;
-			return LIGHT_THEME;
+			if (theme == 'dark') return true;
+			return false;
 		}
 	}
-	if (typeof window == 'undefined') return LIGHT_THEME;
+	return (
+		typeof window !== 'undefined' &&
+		window.matchMedia &&
+		window.matchMedia('(prefers-color-scheme: dark)').matches
+	);
+};
 
+export function getTHEME() {
 	if (isDarkMode()) return DARK_THEME;
 	return LIGHT_THEME;
 }
