@@ -10,6 +10,16 @@
 	export let value = '';
 
 	let enabled = false;
+
+	type E = Event & {
+		currentTarget: EventTarget & HTMLInputElement;
+	};
+
+	export let onKeyDown: (e: E) => any = () => {};
+	export let onKeyUp: (e: E) => any = () => {};
+	export let onFocus: (e: E) => any = () => {};
+	export let onBlur: (e: E) => any = () => {};
+	export let onChange: (e: E) => any = () => {};
 </script>
 
 <div
@@ -27,18 +37,23 @@
 		{readonly}
 		bind:value
 		on:change={(e) => {
+			onChange(e);
 			if (e.currentTarget.value.length > 0) enabled = true;
 		}}
 		on:keydown={(e) => {
+			onKeyDown(e);
 			if (e.currentTarget.value.length > 0) enabled = true;
 		}}
 		on:keyup={(e) => {
+			onKeyUp(e);
 			if (e.currentTarget.value.length > 0) enabled = true;
 		}}
 		on:focus={(e) => {
+			onFocus(e);
 			enabled = true;
 		}}
 		on:blur={(e) => {
+			onBlur(e);
 			if (e.currentTarget.value.length == 0) enabled = false;
 		}}
 	/>
@@ -63,7 +78,8 @@
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
-		height: 1rem;
+		height: calc(1rem + 0.7rem * 2);
+		box-sizing: border-box;
 		width: 100%;
 		padding: 0.7rem;
 		background: none;

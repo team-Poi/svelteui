@@ -14,7 +14,7 @@
 	{#if placeholder != ''}
 		<div class="plholder">{placeholder}</div>
 	{/if}
-	<textarea bind:value style={textareaStyle} {readonly} />
+	<textarea bind:value style={textareaStyle} {readonly} on:click on:keydown on:keypress on:keyup />
 </div>
 
 <style>
