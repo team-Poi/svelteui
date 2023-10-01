@@ -18,3 +18,14 @@ import Row, { Garo } from './Flex/Row';
 import Flex from './Flex/Flex';
 import FlexGrow from './Flex/FlexGrow';
 export { Column, Saero, Row, Garo, Flex, FlexGrow };
+
+import {
+	DARK_THEME,
+	LIGHT_THEME,
+	getTHEME,
+	isDarkMode,
+	onChangeTheme,
+	setTheme
+} from './ThemeProvider/theme';
+
+export { DARK_THEME, LIGHT_THEME, getTHEME, isDarkMode, onChangeTheme, setTheme };
