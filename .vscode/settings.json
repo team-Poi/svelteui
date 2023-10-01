@@ -3,7 +3,7 @@
 		".eslintignore": true,
 		".eslintrc.cjs": true,
 		".git": true,
-		".gitignore": true,
+		".gitignore": false,
 		".npmrc": true,
 		".prettierignore": true,
 		".prettierrc": true,
