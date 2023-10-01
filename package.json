@@ -1,6 +1,6 @@
 {
 	"name": "@team.poi/svelteui",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "UIKit made by @team.poi for svelte",
 	"scripts": {
 		"dev": "vite dev",
