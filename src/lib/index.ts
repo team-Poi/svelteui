@@ -6,8 +6,9 @@ import Button from './Button';
 import Slider from './Slider';
 import Input from './Input';
 import Loading from './Loading';
+import Checkbox from './Checkbox';
 
-export { ThemeProvider, Card, Progress, Container, Button, Slider, Input, Loading };
+export { ThemeProvider, Card, Progress, Container, Button, Slider, Input, Loading, Checkbox };
 
 import type Color from './types/Color';
 export { Color };
