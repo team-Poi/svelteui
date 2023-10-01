@@ -16,8 +16,7 @@
 		box-sizing: border-box;
 	}
 	.container {
-		padding-right: 15px;
-		padding-left: 15px;
+		padding: 0px var(--GAP-MAIN);
 		margin-right: auto;
 		margin-left: auto;
 	}
