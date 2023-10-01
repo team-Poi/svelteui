@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Card from '../Card/Card.svelte';
-	import THEME from './theme';
+	import { getTHEME } from './theme';
+
+	const THEME = getTHEME();
 
 	let colorFlatten: { [key: string]: string } = {};
 
@@ -37,10 +39,10 @@
 </script>
 
 <div class="containerWrapper">
-	<Card Layer="2" style="margin-top: 1rem;">
+	<Card style="margin-top: var(--GAP-MAIN);">
 		<div class="wrapper">
 			{#each Object.keys(colorFlatten) as k}
-				<Card Layer="3" style="margin: 5px">
+				<Card style="margin: 5px">
 					<div class="cont">
 						<div class="title">{k}</div>
 						<div class="grid">

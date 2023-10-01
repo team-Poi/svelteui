@@ -1,11 +1,12 @@
 <script lang="ts">
-	import THEME from './theme';
+	import { onMount } from 'svelte';
+	import { DARK_THEME, LIGHT_THEME, getTHEME, isDarkMode, onChangeTheme } from './theme';
 	type S2S_Object = { [key: string]: string };
-	const ANY_THEME = THEME as { [key: string]: string | S2S_Object };
 	const cssVarCreater = (name: string, value: string) => {
 		return `--${name}: ${value}`;
 	};
-	const getCSS = () => {
+	const getCSS = (THEME = getTHEME()) => {
+		const ANY_THEME = THEME as { [key: string]: string | S2S_Object };
 		let css: string[] = [];
 		Object.keys(THEME).forEach((THEME_KEY) => {
 			if (typeof ANY_THEME[THEME_KEY] == 'string')
@@ -19,9 +20,19 @@
 		css.push('');
 		return css.join(';');
 	};
+
+	let t: 'light' | 'dark' = isDarkMode() ? 'dark' : 'light';
+	onMount(() => {
+		onChangeTheme((x) => {
+			t = x;
+		});
+	});
 </script>
 
-<div style={getCSS()} class="themeProvider">
+<div
+	style={getCSS(t == 'light' ? LIGHT_THEME : DARK_THEME) + `--theme: ${t};`}
+	class={'themeProvider ' + t}
+>
 	<slot />
 </div>
 
@@ -30,5 +41,6 @@
 		min-height: 100vh;
 		color: var(--COLORS-TEXT);
 		background: var(--BACKGROUND);
+		transition: var(--TRANSITION-NORMAL);
 	}
 </style>
