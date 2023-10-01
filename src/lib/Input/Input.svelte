@@ -11,15 +11,11 @@
 
 	let enabled = false;
 
-	type E = Event & {
-		currentTarget: EventTarget & HTMLInputElement;
-	};
-
-	export let onKeyDown: (e: E) => any = () => {};
-	export let onKeyUp: (e: E) => any = () => {};
-	export let onFocus: (e: E) => any = () => {};
-	export let onBlur: (e: E) => any = () => {};
-	export let onChange: (e: E) => any = () => {};
+	export let onKeyDown: (e: KeyboardEvent) => any = () => {};
+	export let onKeyUp: (e: KeyboardEvent) => any = () => {};
+	export let onFocus: (e: FocusEvent) => any = () => {};
+	export let onBlur: (e: FocusEvent) => any = () => {};
+	export let onChange: (e: Event) => any = () => {};
 </script>
 
 <div
