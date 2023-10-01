@@ -1,23 +1,31 @@
 <script lang="ts">
+	import { varGenComponent } from '../ThemeProvider/varGen';
 	import type Color from '../types/Color';
 	export let placeholder = '';
 	export let className = '';
-	export let color: Color = 'PRIMARY';
+	export let color: Color | 'NORMAL' = 'NORMAL';
 	export let style = '';
 	export let wrapperStyle = '';
-	export let LAYER: 'FIRST' | 'SECOND' | 'THIRD' = 'THIRD';
+	export let readonly = false;
+	export let value = '';
 
 	let enabled = false;
 </script>
 
 <div
 	class={'input-wrapper' + (enabled ? ' enabled' : '')}
-	style={`--BG: var(--LAYER_BACKGROUND-${LAYER}); ${wrapperStyle || ''}`}
+	style={`${varGenComponent(
+		color
+	)} --bg: var(--color-lighter); --fg: var(--color); --darker: var(--color-darker); ${
+		wrapperStyle || ''
+	}`}
 >
 	<input
 		class={`input ${className || ''}`}
 		{style}
 		{placeholder}
+		{readonly}
+		bind:value
 		on:change={(e) => {
 			if (e.currentTarget.value.length > 0) enabled = true;
 		}}
@@ -34,7 +42,8 @@
 			if (e.currentTarget.value.length == 0) enabled = false;
 		}}
 	/>
-	<label class="label" for="name" style={`color : var(--COLORS-${color})`}>
+	<!-- svelte-ignore a11y-label-has-associated-control -->
+	<label class="label">
 		{placeholder}
 	</label>
 </div>
@@ -44,7 +53,7 @@
 		position: relative;
 		user-select: none;
 		color: white !important;
-		background-color: var(--BG);
+		background-color: var(--bg);
 		border-radius: var(--RADIUS-NORMAL);
 		height: calc(1.2rem + 1rem + 0.7rem);
 	}
@@ -61,7 +70,7 @@
 		border: none;
 		outline: none;
 		font-size: 0.96rem;
-		color: var(--COLORS-TEXT);
+		color: var(--darker);
 
 		&::placeholder {
 			color: transparent;
@@ -78,11 +87,13 @@
 		top: 50%;
 		transform: translateY(-50%);
 		left: 10px;
-		color: var(--COLORS-TEXT);
 		pointer-events: none;
 		transform-origin: left center;
 		transition: 250ms;
 		position: absolute;
+		color: var(--fg);
+		pointer-events: none;
+		user-select: none;
 	}
 
 	.enabled > .label {
