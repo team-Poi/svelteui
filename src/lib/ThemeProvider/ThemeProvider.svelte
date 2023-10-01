@@ -27,10 +27,20 @@
 			t = x;
 		});
 	});
+
+	export let theme: 'auto' | 'light' | 'dark' = 'auto';
 </script>
 
 <div
-	style={getCSS(t == 'light' ? LIGHT_THEME : DARK_THEME) + `--theme: ${t};`}
+	style={getCSS(
+		theme == 'auto'
+			? t == 'light'
+				? LIGHT_THEME
+				: DARK_THEME
+			: theme == 'light'
+			? LIGHT_THEME
+			: DARK_THEME
+	) + `--theme: ${t};`}
 	class={'themeProvider ' + t}
 >
 	<slot />

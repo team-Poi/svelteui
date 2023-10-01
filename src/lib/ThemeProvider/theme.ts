@@ -197,8 +197,8 @@ export function onChangeTheme(callback: (theme: 'dark' | 'light') => void) {
 }
 
 export function setTheme(theme: 'dark' | 'light') {
-	callbacks.forEach((c) => c(theme));
 	localStorage.setItem('theme', theme);
+	callbacks.forEach((c) => c(theme));
 }
 
 export { LIGHT_THEME, DARK_THEME };
