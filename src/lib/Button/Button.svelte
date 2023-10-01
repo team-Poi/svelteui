@@ -1,19 +1,20 @@
 <script lang="ts">
 	import Ripple from '../Ripple/Ripple.svelte';
+	import varGen from '../ThemeProvider/varGen';
+	import type Color from '../types/Color';
 
 	const buttonProps = {
 		class: [$$restProps.class] as unknown as string
 	};
 	export let className = '',
-		color: 'PRIMARY' | 'SECONDARY' | 'SUCCESS' | 'INFO' | 'ERROR' | 'WARNING' = 'PRIMARY';
-	let bgcolor = `var(--COLORS-${color})`;
+		color: Color = 'PRIMARY';
 	export let disabled = false;
 
 	export let rippleStyle = '';
 	export let style = '';
 </script>
 
-<Ripple style={rippleStyle}>
+<Ripple style={'border-radius: var(--RADIUS-HEAVY);' + rippleStyle}>
 	<button
 		{disabled}
 		on:click
@@ -22,7 +23,7 @@
 		on:mouseleave
 		{...buttonProps}
 		class={'btn ' + (className || '')}
-		style={`--bgcolor: ${bgcolor};${style}`}
+		style={`${varGen(color)}; ${style}`}
 	>
 		<slot />
 	</button>
@@ -35,10 +36,11 @@
 		border-radius: var(--RADIUS-HEAVY);
 		border: 0px;
 		outline: none;
-		color: var(--COLORS-TEXT);
+		background: var(--color-lighter);
+		color: var(--color);
 		cursor: pointer;
-		background: var(--bgcolor);
 		transition: var(--TRANSITION-NORMAL);
+		border: var(--BORDERSIZE-HEAVY) solid var(--color);
 	}
 	.btn:disabled {
 		opacity: 0.5;
