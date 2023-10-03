@@ -8,6 +8,7 @@
 	export let wrapperStyle = '';
 	export let readonly = false;
 	export let value = '';
+	export let TYPE: 'text' | 'password' = 'text';
 
 	let enabled = false;
 
@@ -26,33 +27,65 @@
 		wrapperStyle || ''
 	}`}
 >
-	<input
-		class={`input ${className || ''}`}
-		{style}
-		{placeholder}
-		{readonly}
-		bind:value
-		on:change={(e) => {
-			onChange(e);
-			if (e.currentTarget.value.length > 0) enabled = true;
-		}}
-		on:keydown={(e) => {
-			onKeyDown(e);
-			if (e.currentTarget.value.length > 0) enabled = true;
-		}}
-		on:keyup={(e) => {
-			onKeyUp(e);
-			if (e.currentTarget.value.length > 0) enabled = true;
-		}}
-		on:focus={(e) => {
-			onFocus(e);
-			enabled = true;
-		}}
-		on:blur={(e) => {
-			onBlur(e);
-			if (e.currentTarget.value.length == 0) enabled = false;
-		}}
-	/>
+	{#if TYPE == 'text'}
+		<input
+			class={`input ${className || ''}`}
+			{style}
+			{placeholder}
+			{readonly}
+			type="text"
+			bind:value
+			on:change={(e) => {
+				onChange(e);
+				if (e.currentTarget.value.length > 0) enabled = true;
+			}}
+			on:keydown={(e) => {
+				onKeyDown(e);
+				if (e.currentTarget.value.length > 0) enabled = true;
+			}}
+			on:keyup={(e) => {
+				onKeyUp(e);
+				if (e.currentTarget.value.length > 0) enabled = true;
+			}}
+			on:focus={(e) => {
+				onFocus(e);
+				enabled = true;
+			}}
+			on:blur={(e) => {
+				onBlur(e);
+				if (e.currentTarget.value.length == 0) enabled = false;
+			}}
+		/>
+	{:else if TYPE == 'password'}
+		<input
+			class={`input ${className || ''}`}
+			{style}
+			{placeholder}
+			{readonly}
+			type="password"
+			bind:value
+			on:change={(e) => {
+				onChange(e);
+				if (e.currentTarget.value.length > 0) enabled = true;
+			}}
+			on:keydown={(e) => {
+				onKeyDown(e);
+				if (e.currentTarget.value.length > 0) enabled = true;
+			}}
+			on:keyup={(e) => {
+				onKeyUp(e);
+				if (e.currentTarget.value.length > 0) enabled = true;
+			}}
+			on:focus={(e) => {
+				onFocus(e);
+				enabled = true;
+			}}
+			on:blur={(e) => {
+				onBlur(e);
+				if (e.currentTarget.value.length == 0) enabled = false;
+			}}
+		/>
+	{/if}
 	<!-- svelte-ignore a11y-label-has-associated-control -->
 	<label class="label">
 		{placeholder}

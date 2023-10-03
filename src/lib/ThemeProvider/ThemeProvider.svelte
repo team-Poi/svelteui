@@ -29,6 +29,7 @@
 	});
 
 	export let theme: 'auto' | 'light' | 'dark' = 'auto';
+	export let style = '';
 </script>
 
 <div
@@ -40,7 +41,7 @@
 			: theme == 'light'
 			? LIGHT_THEME
 			: DARK_THEME
-	) + `--theme: ${t};`}
+	) + `--theme: ${t}; ${style}`}
 	class={'themeProvider ' + t}
 >
 	<slot />
@@ -48,7 +49,6 @@
 
 <style>
 	.themeProvider {
-		min-height: 100vh;
 		color: var(--COLORS-TEXT);
 		background: var(--BACKGROUND);
 		transition: var(--TRANSITION-NORMAL);
