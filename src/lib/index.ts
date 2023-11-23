@@ -7,8 +7,9 @@ import Slider from './Slider';
 import Input from './Input';
 import Loading from './Loading';
 import Checkbox from './Checkbox';
+import Textarea from "./Textarea";
 
-export { ThemeProvider, Card, Progress, Container, Button, Slider, Input, Loading, Checkbox };
+export { ThemeProvider, Card, Progress, Container, Button, Slider, Input, Loading, Checkbox, Textarea };
 
 import type Color from './types/Color';
 export { Color };
